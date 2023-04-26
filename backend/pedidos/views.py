@@ -13,15 +13,15 @@ class PedidosViewSet(viewsets.ModelViewSet):
     queryset = Pedido.objects.all()
     serializer_class = PedidoSerializer
     
-    def get_permissions(self):
-        permission_classes = []
-        if self.action == 'retrieve' or self.action == 'list':
-            permission_classes = [IsRecepcionistaOrCocinero]
-        elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
-            permission_classes = [IsRecepcionista]
-        elif self.action == 'productos': # Endpoint custom
-            permission_classes = [IsRecepcionistaOrCocinero]
-        return [permission() for permission in permission_classes]
+    # def get_permissions(self):
+    #     permission_classes = []
+    #     if self.action == 'retrieve' or self.action == 'list':
+    #         permission_classes = [IsRecepcionistaOrCocinero]
+    #     elif self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
+    #         permission_classes = [IsRecepcionista]
+    #     elif self.action == 'productos': # Endpoint custom
+    #         permission_classes = [IsRecepcionistaOrCocinero]
+    #     return [permission() for permission in permission_classes]
 
     @action(detail=True, methods=['get'])
     def productos(self, request, pk=None):

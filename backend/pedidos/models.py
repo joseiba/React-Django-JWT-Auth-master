@@ -1,6 +1,6 @@
 from djongo import models
 
 class Pedido(models.Model):
-    id = models.IntegerField(primary_key=True)
     mesa=models.IntegerField()
+    total=models.IntegerField(default=0)
     lista_productos = models.JSONField()

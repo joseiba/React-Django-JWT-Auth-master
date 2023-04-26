@@ -7,8 +7,9 @@ class PedidoSerializer(serializers.ModelSerializer):
         model = Pedido
         fields = ['id', 'mesa', 'lista_productos']
 
-    def to_representation(self, instance):
+    def to_representation(self, instance):        
         representation = super().to_representation(instance)
+        print(representation)
         representation['lista_productos'] = json.loads(representation['lista_productos'])
         return representation
     
